@@ -1,6 +1,6 @@
 table 50300 "TouristActivity"
 {
-    Caption = 'TouristActivity';
+    Caption = 'Tourist Activity';
     DataClassification = ToBeClassified;
 
     fields
@@ -10,12 +10,35 @@ table 50300 "TouristActivity"
             Caption = 'PrimaryKey';
             DataClassification = SystemMetadata;
         }
-        field(2; "No. of Customers"; Integer)
+
+        field(2; "Offers in Greece"; Integer)
         {
-            Caption = 'No. of Tourists';
             FieldClass = FlowField;
-            CalcFormula = count(Customer);
+            CalcFormula = count(Item where("Item Category Code" = const('ARRANGEMENT'),
+                                            "Country" = const('Greece')));
         }
+
+        field(3; "Offers in Spain"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count(Item where("Item Category Code" = const('ARRANGEMENT'),
+                                            "Country" = const('Spain')));
+        }
+        field(4; "Offers in Italy"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count(Item where("Item Category Code" = const('ARRANGEMENT'),
+                                            "Country" = const('Italy')));
+        }
+
+        field(5; "Offers in Croatia"; Integer)
+        {
+            FieldClass = FlowField;
+            CalcFormula = count(Item where("Item Category Code" = const('ARRANGEMENT'),
+                                            "Country" = const('Croatia')));
+        }
+
+
     }
     keys
     {

@@ -1,8 +1,9 @@
 page 50301 "TouristActivity"
 {
-    Caption = 'TouristActivity';
+    Caption = 'Tourist Activity';
     PageType = CardPart;
     SourceTable = TouristActivity;
+    RefreshOnActivate = true;
 
     layout
     {
@@ -10,67 +11,47 @@ page 50301 "TouristActivity"
         {
             group(General)
             {
+                ShowCaption = false;
                 cuegroup(Group)
                 {
-                    Caption = 'Tourist';
-                    field(Field1; MyCueValue())
+                    Caption = 'Tourist offers in different countries';
+                    field(Field1; Rec."Offers in Greece")
                     {
                         ApplicationArea = All;
-                        Caption = 'My Field 1';
-                        ToolTip = 'My Field 1';
-                        Image = Camera;
-                        Style = Favorable;
-
-                        trigger OnDrillDown()
-                        begin
-                            Message('Cao');
-                        end;
-                    }
-
-                    field(Field2; Rec."No. of Customers")
-                    {
-                        ApplicationArea = All;
-                        Caption = 'My Field 2';
-                        ToolTip = 'My Field 2';
+                        Caption = 'Greece 🌴';
                         Image = Camera;
                         Style = AttentionAccent;
-                    }
+                        ToolTip = 'Specifies the value of the Offers in Greece field.';
 
-                    field(Field3; MyCueValue())
+                    }
+                    field(Field2; Rec."Offers in Spain")
                     {
                         ApplicationArea = All;
-                        Caption = 'My Field 2';
-                        ToolTip = 'My Field 2';
+                        Caption = 'Spain 💃🏻';
                         Image = Camera;
                         Style = AttentionAccent;
+                        ToolTip = 'Specifies the value of the Offers in Spain field.';
+                    }
+
+                    field(Field3; Rec."Offers in Italy")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Italy 🍕';
+                        Image = Camera;
+                        Style = AttentionAccent;
+                        ToolTip = 'Specifies the value of the Offers in Italy field.';
+                    }
+
+                    field(Field4; Rec."Offers in Croatia")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Croatia ⛵';
+                        Image = Camera;
+                        Style = AttentionAccent;
+                        ToolTip = 'Specifies the value of the Offers in Croatia field.';
                     }
                 }
 
-                cuegroup(Group2)
-                {
-                    actions
-                    {
-                        action(ActionName)
-                        {
-                            //RunObject = page "Sales Invoice";
-                            Caption = 'Create Sales Invoice';
-                            Image = TileBrickNew;
-                            ToolTip = 'this action will create new sales invoice and then hopefully also post it.';
-                            RunObject = Codeunit CreateSalesInvoice;
-
-                        }
-
-                        action(ActionYellow)
-                        {
-                            Image = TileYellow;
-
-                            trigger OnAction()
-                            begin
-                                Message('Goodbye');
-                            end;
-                        }
-                    }
-                }
             }
         }
 
@@ -78,16 +59,10 @@ page 50301 "TouristActivity"
 
     trigger OnOpenPage()
     begin
-        if not FindFirst() then begin
+        if not Rec.Get() then begin
             Rec.Init();
             Rec.Insert(true);
         end;
     end;
 
-    local procedure MyCueValue(): Integer
-    var
-        myInt: Integer;
-    begin
-        exit(2)
-    end;
 }
