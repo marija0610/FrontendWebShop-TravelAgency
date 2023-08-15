@@ -26,19 +26,16 @@ table 50308 "Login"
             Caption = 'Password';
             DataClassification = EndUserIdentifiableInformation;
         }
-
         field(5; "E-Mail"; Text[100])
         {
             Caption = 'E-Mail';
             DataClassification = EndUserIdentifiableInformation;
         }
-
         field(6; "Name"; Text[100])
         {
             Caption = 'Name';
             DataClassification = EndUserIdentifiableInformation;
         }
-
     }
     keys
     {

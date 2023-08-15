@@ -18,11 +18,6 @@ page 50313 "Reservation List"
                     ToolTip = 'Specifies the value of the No. field.';
                     ApplicationArea = All;
                 }
-                field("Arrangement No."; Rec."Arrangement No.")
-                {
-                    ToolTip = 'Specifies the value of the Arrangement No. field.';
-                    ApplicationArea = All;
-                }
                 field("Hotel No."; Rec."Hotel No.")
                 {
                     ToolTip = 'Specifies the value of the Hotel No. field.';

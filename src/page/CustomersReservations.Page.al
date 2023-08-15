@@ -65,12 +65,10 @@ page 50318 "Customers Reservations"
     var
         Customer: Record Customer;
         LoginManagement: Codeunit "Login Management";
-
     begin
         Customer.SetRange(Username, LoginManagement.GetCurrentLogin()."User Name");
         if Customer.FindFirst() then
             Rec.SetRange("Customer No.", Customer."No.");
-
     end;
 
     trigger OnAfterGetRecord()

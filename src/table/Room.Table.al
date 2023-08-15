@@ -1,11 +1,14 @@
+/// <summary>
+/// Table Room (ID 50305).
+/// </summary>
 table 50305 "Room"
 {
     Caption = 'Room';
-    DataClassification = ToBeClassified;
+    DataClassification = CustomerContent;
 
     fields
     {
-        field(1; "Hotel Entry No."; Integer)
+        field(1; "Hotel Entry No."; Code[20])
         {
             Caption = 'Hotel Entry No.';
             DataClassification = AccountData;
@@ -20,16 +23,9 @@ table 50305 "Room"
             Caption = 'Type';
             DataClassification = AccountData;
         }
-
         field(3; Floor; Integer)
         {
             Caption = 'Floor';
-            DataClassification = AccountData;
-        }
-
-        field(5; Free; Boolean)
-        {
-            Caption = 'Free';
             DataClassification = AccountData;
         }
     }

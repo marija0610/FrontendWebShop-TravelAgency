@@ -117,7 +117,6 @@ page 50312 "Reservation Card"
                     ToolTip = 'Specifies the value of the Cash payment amount field.';
                     ApplicationArea = All;
                 }
-
             }
         }
     }

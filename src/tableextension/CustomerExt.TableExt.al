@@ -6,6 +6,15 @@ tableextension 50302 "Customer Ext" extends Customer
         {
             Caption = 'Username';
             DataClassification = EndUserIdentifiableInformation;
+            trigger OnValidate()
+            Var
+                Customer: Record Customer;
+            begin
+                Customer.SetRange("Username", Rec.Username);
+                Customer.SetFilter("No.", '<>%1', "No.");
+                If Customer.FindFirst() then
+                    Error('The Username must be unique');
+            end;
         }
         field(50301; Password; Text[100])
         {

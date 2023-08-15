@@ -1,6 +1,7 @@
 pageextension 50302 "Item List Ext" extends "Item List"
 {
     Editable = false;
+    Caption = 'Hotels';
 
     layout
     {
@@ -45,9 +46,8 @@ pageextension 50302 "Item List Ext" extends "Item List"
                             Reservation."E-mail" := Customer."E-Mail";
                         end;
 
-                        Reservation."Arrangement No." := Rec."No.";
-                        Reservation."Hotel No." := Rec."Hotel No.";
-                        Reservation."Hotel Name" := Rec."Hotel Name";
+                        Reservation."Hotel No." := Rec."No.";
+                        Reservation."Hotel Name" := Rec.Description;
                         Reservation."Hotel Address" := Rec."Hotel Address";
                         Reservation.Destination := Rec.City + ', ' + Rec.Country;
                         Reservation.Insert(true);

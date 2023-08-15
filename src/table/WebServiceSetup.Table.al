@@ -2,7 +2,6 @@ table 50302 "Web Service Setup"
 {
     Caption = 'Web Service Setup';
     DataClassification = ToBeClassified;
-
     fields
     {
         field(1; PrimaryKey; Code[10])

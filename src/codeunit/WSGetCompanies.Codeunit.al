@@ -13,6 +13,7 @@ codeunit 50303 "WSGetCompanies"
         UserPwdTok: Label '%1:%2', Comment = '%1 = Username, %2 = Password.';
     begin
         HttpHeaders := HttpClient.DefaultRequestHeaders();
+        HttpHeaders.Add('Accept', '*/*');
         HttpHeaders.Add('Authorization', BasicTok
             + Base64Convert.ToBase64(
                 StrSubstNo(UserPwdTok, UserName, Password)));
@@ -159,8 +160,4 @@ codeunit 50303 "WSGetCompanies"
             Error('Web service returned error %1.', HttpResponseMessage.HttpStatusCode());
 
     end;
-
-
-
-
 }

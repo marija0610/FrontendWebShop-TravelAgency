@@ -44,7 +44,9 @@ page 50305 "Web Service Setup"
 
     local procedure GetBaseURL(): Text[250]
     begin
-        exit('http://betsandbox.westeurope.cloudapp.azure.com:7048/E1/api/v2.0');
+        exit('http://bc-195-default:7048/BC/api/v2.0');
+        //exit('http://BC19back-default:7048/BC/api/v2.0') //for my local container
+        //exit('http://betsandbox.westeurope.cloudapp.azure.com:7048/E1/api/v2.0');
     end;
 
 }

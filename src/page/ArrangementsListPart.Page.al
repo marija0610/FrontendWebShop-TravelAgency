@@ -17,7 +17,7 @@ page 50303 "Arrangements List Part"
                     ToolTip = 'Specifies the number of the item.';
                     ApplicationArea = Basic, Suite;
                 }
-                field("Hotel Name"; Rec."Hotel Name")
+                field("Hotel Name"; Rec.Description)
                 {
                     ToolTip = 'Displays Hotel Name';
                     ApplicationArea = All;

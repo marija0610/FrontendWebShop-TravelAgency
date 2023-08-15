@@ -1,19 +1,19 @@
-codeunit 50300 "SendNewCustomer"
+codeunit 50302 "SendHotel"
 {
-    TableNo = Customer;
+    TableNo = Item;
     trigger OnRun()
     var
         WSGetCompanies: Codeunit WSGetCompanies;
-        UrlCustomerLbl: Label '%1/companies(%2)/customers', Comment = '%1: base url, %2: company id.';
+        UrlItemLbl: Label '%1/companies(%2)/items', Comment = '%1: base url, %2: company id.';
         CompanyId: Text;
-        CustomerId: Text;
+        ItemId: Text;
 
     begin
         CompanyId := WSGetCompanies.GetCompanyId('Travel Agency');
-        CustomerId := SendCustomer(StrSubstNo(UrlCustomerLbl, WSGetCompanies.GetBaseURL(), CompanyId), CustomerContent(Rec."No.", Rec.Name, Rec."E-Mail"));
+        ItemId := SendItem(StrSubstNo(UrlItemLbl, WSGetCompanies.GetBaseURL(), CompanyId), ItemContent(Rec."No.", Rec.Description, Rec."Item Category Code"));
     end;
 
-    local procedure SendCustomer(url: Text; content: Text): Text
+    local procedure SendItem(url: Text; content: Text): Text
     var
         WSGetCompanies: Codeunit WSGetCompanies;
         JsonObjectDocument: JsonObject;
@@ -24,13 +24,12 @@ codeunit 50300 "SendNewCustomer"
         exit(JsonToken.AsValue().AsText());
     end;
 
-    local procedure CustomerContent(No: Code[20]; Name: Text[250]; Email: Text[100]) Result: Text
+    local procedure ItemContent(No: Code[20]; Description: Text[250]; ItemCategoryCode: Text[100]) Result: Text
     var
         JsonDocument: JsonObject;
     begin
         JsonDocument.Add('number', No);
-        JsonDocument.Add('displayName', Name);
-        JsonDocument.Add('email', Email);
+        JsonDocument.Add('displayName', Description);
         JsonDocument.WriteTo(Result);
     end;
 }

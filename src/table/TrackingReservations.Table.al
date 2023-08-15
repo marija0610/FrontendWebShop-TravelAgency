@@ -10,11 +10,11 @@ table 50301 "Tracking Reservations"
             DataClassification = AccountData;
             AutoIncrement = true;
         }
-        field(1; "Hotel No."; Integer)
+        field(1; "Hotel No."; Code[20])
         {
             Caption = 'Hotel No.';
             DataClassification = AccountData;
-            TableRelation = Hotel."No.";
+            TableRelation = Item."No.";
         }
         field(2; "Customer No."; Code[20])
         {

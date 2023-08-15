@@ -33,6 +33,14 @@ page 50315 "Register User"
                 {
                     ToolTip = 'Specifies the value of the User Name field.';
                     ApplicationArea = All;
+                    trigger OnValidate()
+                    var
+                        Customer: Record Customer;
+                    begin
+                        Customer.SetRange(Username, Rec."User Name");
+                        if Customer.FindFirst() then
+                            Error('This username already exist');
+                    end;
                 }
                 field(Password; Rec.Password)
                 {

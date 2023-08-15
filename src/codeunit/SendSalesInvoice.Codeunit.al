@@ -14,10 +14,10 @@ codeunit 50301 "SendSalesInvoice"
         quantity: Decimal;
     begin
         quantity := (Rec."Ending Date" - Rec."Starting Date") + 1;
-        CompanyId := WSGetCompanies.GetCompanyId('Marija d.o.o.');
+        CompanyId := WSGetCompanies.GetCompanyId('Travel Agency');
         InvoiceId := SendSalesHeader(StrSubstNo(UrlHeaderLbl, WSGetCompanies.GetBaseURL(), CompanyId), HeaderContent(Today(), Rec."Customer No."));
         SendSalesLine(StrSubstNo(UrlLineLbl, WSGetCompanies.GetBaseURL(), CompanyId, InvoiceId),
-                    LineContent('Item', Rec."Arrangement No.", quantity, 'DAY', Rec."Hotel Name", Rec."Unit Price"));
+                    LineContent('Item', Rec."Hotel No.", quantity, 'DAY', Rec."Hotel Name", Rec."Unit Price"));
         PostInvoice(StrSubstNo(UrlPostSalesInvoiceLbl, WSGetCompanies.GetBaseURL(), CompanyId, InvoiceId), '');
     end;
 

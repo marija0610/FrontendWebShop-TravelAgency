@@ -1,6 +1,6 @@
 codeunit 50306 "RoomGenerator"
 {
-    TableNo = Hotel;
+    TableNo = Item;
     trigger OnRun()
     var
         i: Integer;
@@ -13,9 +13,10 @@ codeunit 50306 "RoomGenerator"
             CreateRoom(Rec."No.", 3, 300 + i, "Room Type"::"Triple");
         for i := 1 to Rec."No. of quad rooms" do
             CreateRoom(Rec."No.", 4, 400 + i, "Room Type"::"Quad");
+        Message('Hotel Rooms are sucessfully generated.');
     end;
 
-    local procedure CreateRoom(HotelNo: Integer; FloorNo: Integer; RoomNo: Integer; RoomType: Enum "Room Type")
+    local procedure CreateRoom(HotelNo: Code[20]; FloorNo: Integer; RoomNo: Integer; RoomType: Enum "Room Type")
     var
         Room: Record Room;
     begin
@@ -24,7 +25,6 @@ codeunit 50306 "RoomGenerator"
         Room."Hotel Entry No." := HotelNo;
         Room.Floor := FloorNo;
         Room.Type := RoomType;
-        Room.Free := true;
         Room.Insert(true);
     end;
 

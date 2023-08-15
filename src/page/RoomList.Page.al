@@ -27,11 +27,6 @@ page 50311 "Room List"
                     ToolTip = 'Specifies the value of the No. field.';
                     ApplicationArea = All;
                 }
-                field(Floor; Rec.Floor)
-                {
-                    ToolTip = 'Specifies the value of the Flore field.';
-                    ApplicationArea = All;
-                }
             }
         }
     }

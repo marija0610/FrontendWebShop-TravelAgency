@@ -89,6 +89,8 @@ page 50316 "Login Info"
                         Login.TransferFields(TempLogin);
                         Login.Insert(true);
 
+
+                        Customer.Reset();
                         Customer.Init();
                         Customer.Name := TempLogin.Name;
                         Customer.Username := TempLogin."User Name";
@@ -99,16 +101,15 @@ page 50316 "Login Info"
 
                     if not (TempLogin."User Name" = '') then begin
                         Customer.SetRange(Username, TempLogin."User Name");
-                        if Customer.FindFirst() then
+                        if Customer.FindFirst() then begin
                             SendNewUser.Run(Customer);
-                        Message('You have successfully created your account.');
+                            Message('You have successfully created your account.');
+                        end;
                     end;
-
                 end;
             }
         }
     }
-
 
     var
         LoginManagement: Codeunit "Login Management";

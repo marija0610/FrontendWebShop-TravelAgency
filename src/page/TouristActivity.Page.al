@@ -32,7 +32,6 @@ page 50301 "TouristActivity"
                         Style = AttentionAccent;
                         ToolTip = 'Specifies the value of the Offers in Spain field.';
                     }
-
                     field(Field3; Rec."Offers in Italy")
                     {
                         ApplicationArea = All;
@@ -41,7 +40,6 @@ page 50301 "TouristActivity"
                         Style = AttentionAccent;
                         ToolTip = 'Specifies the value of the Offers in Italy field.';
                     }
-
                     field(Field4; Rec."Offers in Croatia")
                     {
                         ApplicationArea = All;
@@ -51,10 +49,8 @@ page 50301 "TouristActivity"
                         ToolTip = 'Specifies the value of the Offers in Croatia field.';
                     }
                 }
-
             }
         }
-
     }
 
     trigger OnOpenPage()

@@ -5,7 +5,6 @@ table 50307 "Reservation"
     LookupPageId = "Reservation List";
     DataCaptionFields = "No.", "Hotel Name", "Destination";
 
-
     fields
     {
         field(1; "No."; Integer)
@@ -14,12 +13,7 @@ table 50307 "Reservation"
             DataClassification = AccountData;
             AutoIncrement = true;
         }
-        field(11; "Arrangement No."; Code[20])
-        {
-            Caption = 'Arrangement No.';
-            DataClassification = AccountData;
-        }
-        field(2; "Hotel No."; Integer)
+        field(2; "Hotel No."; Code[20])
         {
             Caption = 'Hotel No.';
             DataClassification = AccountData;
@@ -98,7 +92,7 @@ table 50307 "Reservation"
             var
                 SalesPrice: Record "Sales Price";
             begin
-                SalesPrice.SetRange(SalesPrice."Item No.", Rec."Arrangement No.");
+                SalesPrice.SetRange(SalesPrice."Item No.", Rec."Hotel No.");
                 SalesPrice.SetRange(SalesPrice."Variant Code", Format(Rec."Room Type"));
                 if SalesPrice.FindFirst() then
                     Rec."Unit Price" := SalesPrice."Unit Price"
@@ -119,41 +113,35 @@ table 50307 "Reservation"
             DataClassification = AccountData;
             Editable = false;
         }
-
         /*field(12; "Status"; Enum Status)
         {
             Caption = 'Total Price';
             DataClassification = AccountData;
             Editable = false;
         }*/
-
         field(13; "Customer No."; Code[20])
         {
             Caption = 'Customer No.';
             DataClassification = AccountData;
             Editable = false;
         }
-
         field(14; "Customer Name"; Text[100])
         {
             Caption = 'Name';
             DataClassification = AccountData;
             Editable = false;
         }
-
         field(15; "E-mail"; Text[80])
         {
             Caption = 'E-Mail';
             DataClassification = AccountData;
             Editable = false;
         }
-
         /*field(16; "Payment method"; Enum PaymentMethod)
         {
             Caption = 'Paymnet method';
             DataClassification = AccountData;
         }*/
-
         field(17; "Card payment amount"; Decimal)
         {
             Caption = 'Card payment amount';
@@ -164,7 +152,6 @@ table 50307 "Reservation"
                 Rec."Cash payment amount" := Rec."Total Price" - Rec."Card payment amount";
             end;
         }
-
         field(18; "Cash payment amount"; Decimal)
         {
             Caption = 'Cash payment amount';
@@ -174,7 +161,6 @@ table 50307 "Reservation"
                 Rec."Card payment amount" := Rec."Total Price" - Rec."Cash payment amount";
             end;
         }
-
     }
     keys
     {
@@ -182,7 +168,6 @@ table 50307 "Reservation"
         {
             Clustered = true;
         }
-
         key(SK; "Starting Date")
         { }
     }
